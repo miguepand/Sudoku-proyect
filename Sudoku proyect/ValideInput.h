@@ -11,5 +11,5 @@ int ValidarNegativo( char validar[], int PermiteNegativo );
 int ValidarSaludo(char saludo[1000]);
 void gotoxy(int x,int y);
 int menu(const char *title, const char *opciones[], int n);
-int menu2(const char *title, const char *opciones[], int n);
-void mostrar_tablero();
+int menu2(const char *title, const char *opciones[], int n,int tipo);
+void mostrar_tablero(int tipo);

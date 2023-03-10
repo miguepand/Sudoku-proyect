@@ -1,5 +1,6 @@
 #include "ValideInput.h"
 #include<conio.h>
+
 #define rojo "\033[31m"
 #define blanco "\033[1;37m"
 #define TECLA_ARRIBA 72
@@ -7,7 +8,6 @@
 #define TECLA_DERECHA 77
 #define TECLA_IZQUIERDA 75
 #define ENTER 13
-
 
 void gotoxy(int x,int y){  
       HANDLE hcon;  
@@ -26,9 +26,9 @@ void gotoxy(int x,int y){
 		negativos).
         
         Parameters:
-			*numero --> Cadena de caracteres donde se guardo la entrada
+			-*numero --> Cadena de caracteres donde se guardo la entrada
 			de datos 
-			*PermiteNegativo --> 0 si no permite, 1 si lo permite.
+			-PermiteNegativo --> 0 si no permite, 1 si lo permite.
 ========================================================================*/
 int ValidarNumero(char numero[],int PermiteNegativo)
 {
@@ -81,10 +81,11 @@ int ValidarNumero(char numero[],int PermiteNegativo)
 		de numero del rango permitido, si existe. Si no cumple, repite.
         
         Parameters:
-			*PermiteNegativo --> 0 si no permite, 1 si lo permite.
-			*ExisteRango --> 0 si no existe, 1 si existe
-			*min --> Rango minimo, en caso de existir
-			*max --> Rango maximo, en caso de existir
+			-PermiteNegativo --> 0 si no permite, 1 si lo permite.
+			-ExisteRango --> 0 si no existe, 1 si existe
+			-min --> Rango minimo, en caso de existir
+			-max --> Rango maximo, en caso de existir
+			-*n --> numero
 ========================================================================*/
 int ValidarEntero(int PermiteNegativo,int ExisteRango, int min,int max,int *n)
 {
@@ -129,9 +130,9 @@ int ValidarEntero(int PermiteNegativo,int ExisteRango, int min,int max,int *n)
 		negativos).
         
         Parameters:
-			*valida --> Cadena de caracteres donde se guardo la entrada
+			-*valida --> Cadena de caracteres donde se guardo la entrada
 			de datos 
-			*PermiteNegativo --> 0 si no permite, 1 si lo permite.
+			-PermiteNegativo --> 0 si no permite, 1 si lo permite.
 ========================================================================*/
 int ValidarNegativo(char validar[], int PermiteNegativo)
 {
@@ -253,8 +254,6 @@ int menu(const char *title, const char *opciones[], int n){
 				break;
 				
 			case ENTER:
-
-				printf("\n\npresiono enter");
 				selected =1;
 				break;
 		}
@@ -265,7 +264,7 @@ int menu(const char *title, const char *opciones[], int n){
 	return selectedoption;
 }
 
-int menu2(const char *title, const char *opciones[], int n){
+int menu2(const char *title, const char *opciones[], int n, int tipo){
 	int selectedoption=1;
 	int selected = 0;
 	int tecla;
@@ -274,7 +273,7 @@ int menu2(const char *title, const char *opciones[], int n){
 	do{
 		system("cls");
 		printf("\n\n\n");
-		mostrar_tablero();
+		mostrar_tablero(tipo);
 	
 		gotoxy(20, 3 + selectedoption );	printf("-->");
 		gotoxy(25,2); printf("%s",title);
